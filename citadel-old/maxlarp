@@ -1,0 +1,9 @@
+#!/bin/bash
+
+notify-send "Maximum Larp Activated"
+
+kitty --title "MAXLARP-CMATRIX" -e cmatrix &
+kitty --title "MAXLARP-FASTFETCH" -e bash -c "fastfetch; exec fish" &
+
+sleep 1
+exec cava
