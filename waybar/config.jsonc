@@ -1,0 +1,116 @@
+{
+	"position": "top",
+	"margin-top": 15,
+	"modules-left": [
+		"clock",
+		"tray",
+		"wireplumber#sink"
+	],
+	"modules-center": [
+		"hyprland/workspaces"
+	],
+	"modules-right": [
+		"network",
+		"battery",
+		"custom/notification"
+	],
+	"clock": {
+		"format": "{:%I:%M %p}",
+		"format-alt": "{:Y-%m-%d}"
+	},
+	"hyprland/workspaces": {
+		"format": "{name}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"active": "",
+			"default": ""
+		},
+		"persistent-workspaces": {
+			"*": [
+				2,
+				3,
+				4,
+				5
+			], // 2-5 on every monitor
+			"HDMI-A-1": [
+				1
+			] // but only workspace 1 on HDMI-A-1
+		}
+	},
+	"tray": {
+		"icon-size": 21,
+		"spacing": 10
+	},
+	"wireplumber#sink": {
+		"format": "{volume}% {icon}",
+		"format-muted": "",
+		"format-icons": [
+			"",
+			"",
+			""
+		],
+		"on-click": "helvum",
+		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"scroll-step": 5
+	},
+	"network": {
+		"interface": "wlp3s0",
+		"format": "{ifname}",
+		"format-wifi": "{essid} ",
+		"format-ethernet": "{ifname} ",
+		"format-disconnected": "", //An empty format will hide the module.
+		"format-disconnected": "",
+		"tooltip-format": "{ifname}",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50
+	},
+	"battery": {
+		"interval": 60,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"events": {
+			"on-discharging-warning": "notify-send -u normal 'Low Battery'",
+			"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+			"on-charging-100": "notify-send -u normal 'Battery Full!'",
+			"on-discharging": "notify-send -u normal 'Power Switch' Discharging",
+			"on-charging": "notify-send -u normal 'Power Switch' Charging'"
+		},
+		"format": "{capacity}% {icon}",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"max-length": 25
+	},
+	"custom/notification": {
+		"tooltip": true,
+		"format": "<span size='16pt'>{icon}</span>",
+		"format-icons": {
+			"notification": "󱅫",
+			"none": "󰂜",
+			"dnd-notification": "󰂠",
+			"dnd-none": "󰪓",
+			"inhibited-notification": "󰂛",
+			"inhibited-none": "󰪑",
+			"dnd-inhibited-notification": "󰂛",
+			"dnd-inhibited-none": "󰪑"
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
+}
