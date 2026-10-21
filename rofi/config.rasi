@@ -1,0 +1,9 @@
+// @theme "~/.local/share/rofi/themes/arc_dark_transparent_colors.rasi"
+
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+
+configuration {
+	font: "JetBrainsMono Nerd Font 12";
+	display-drun: "Search Apps";
+	show-icons: true;
+}
